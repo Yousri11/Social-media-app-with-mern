@@ -2,7 +2,7 @@ const ex=require('express');
 const app=ex();
 const mongoose=require('mongoose')
 const ur=require('./routes/user.router')
-
+const cors=require('cors')
 app.use(ex.json())
 
 app.get('/',(req,res)=>{
@@ -13,7 +13,7 @@ app.get('/',(req,res)=>{
 
 
 app.use('/users' , ur)
-
+app.user(cors())
 mongoose.connect('mongodb://localhost:27017/smapp',{
     useNewUrlParser : true,
     useUnifiedTopology : true,
