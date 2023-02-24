@@ -1,4 +1,5 @@
 import react, { useState } from 'react'
+import axios from 'axios'
 import "../designcss/register.css"
 const Register =()=>{
     const [firstname,setFirstname]=useState('')
@@ -10,9 +11,24 @@ const Register =()=>{
     const [picture,setPicture]=useState('')
 
 
-    const Register=(e)=>{
+    const Register=async (e)=>{
         e.preventDefault()
-        console.log("saha lmef " , firstname)
+        const data ={
+            firstname : firstname,
+            lastname : lastname,
+            email : email,
+            pass : password,
+            bio : bio,
+            picture : picture,
+            birth : birthdate
+        }
+        try{
+            const res=await axios.post('http://localhost:5000/users/signup',data)
+            console.log("res = ",res)
+        }
+            catch(e){
+                console.log(e)
+            }
     }
     return <div className='all'>
             <div className='register'>

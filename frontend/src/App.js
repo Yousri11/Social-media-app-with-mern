@@ -7,7 +7,7 @@ function App() {
     [
       {
         path:"/",
-        element : <div>hello</div>
+        element : <div><a href="/register">register</a> hello</div>
       },
       {
         path:"/register",

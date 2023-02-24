@@ -10,10 +10,10 @@ app.get('/',(req,res)=>{
 })
 
 
-
+app.use( cors() )
 
 app.use('/users' , ur)
-app.user(cors())
+
 mongoose.connect('mongodb://localhost:27017/smapp',{
     useNewUrlParser : true,
     useUnifiedTopology : true,

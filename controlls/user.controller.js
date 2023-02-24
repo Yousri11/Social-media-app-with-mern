@@ -1,15 +1,14 @@
 const user = require('../models/user.models.js');
 
 exports.signup = (req,res)=>{
-    console.log(req.body)
     const data = {
-        firstname : 'yousri',
-        lastname : 'meftah',
-        email : 'yousri@gmail.com',
-        pass : '123456789',
-        bio : 'am the best dev ',
-        picture : 'yousri.png',
-        birth : new Date()
+        firstname : req.body.firstname,
+        lastname : req.body.lastname,
+        email : req.body.email,
+        pass : req.body.pass,
+        bio : req.body.bio,
+        picture : req.body.picture,
+        birth : req.body.birth
     }
     const u1=new user(data);
     u1.save().then(
