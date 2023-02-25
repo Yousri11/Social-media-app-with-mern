@@ -40,19 +40,19 @@ const Register =()=>{
                     <p>dark space social media appication</p>
                     <div className='inputs' >
                         
-                        <input type="text"  placeholder="username" value={firstname} onChange={(e)=>setFirstname(e.target.value)} />
+                        <input type="text" required placeholder="username" value={firstname} onChange={(e)=>setFirstname(e.target.value)} />
                     </div>
                     <div className='inputs'>
                         
-                        <input type="text"  placeholder="lastname" value={lastname} onChange={(e)=>setLastname(e.target.value)} />
+                        <input type="text" required placeholder="lastname" value={lastname} onChange={(e)=>setLastname(e.target.value)} />
                     </div>
                     <div className='inputs'>
                        
-                        <input type="email"  placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                        <input type="email"  placeholder="email" required value={email} onChange={(e)=>setEmail(e.target.value)} />
                     </div>
                     <div className='inputs'>
                        
-                        <input type="password"  placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                        <input type="password"  placeholder="password" required pattern='"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"' value={password} onChange={(e)=>setPassword(e.target.value)} />
                     </div>
                     <div className='inputs'>
                         
