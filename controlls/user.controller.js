@@ -33,6 +33,7 @@ exports.signin=async (req,res)=>{
         //return res.status(200).json(message : finduser.pass)
         //generate token
         const cle="YOUSRI"
+        console.log("see if the error is fixed or not nvm tihs commit")
         const token = jwt.sign({data : { id : finduser._id,role : finduser.role} },
             cle,
             { expiresIn : "24h"}
