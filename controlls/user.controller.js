@@ -1,5 +1,5 @@
 const user = require('../models/user.models.js');
-
+const jwt = require('jsonwebtoken');
 exports.signup = (req,res)=>{
     const data = {
         firstname : req.body.firstname,
@@ -20,4 +20,28 @@ exports.signup = (req,res)=>{
         res.status(400).json({message : "rakaz"});
     }
     )
+}
+exports.signin=async (req,res)=>{
+    const email=req.body.email
+    const pw=req.body.pass
+    const finduser=await user.findOne({email : email})
+    if(!finduser) return res.status(400).json({message : "user does not exist" })
+    if(finduser.pass!=pw){
+        return res.status(400).json({message : pw})
+    }
+    else{
+        //return res.status(200).json(message : finduser.pass)
+        //generate token
+        const cle="YOUSRI"
+        const token = jwt.sign({data : { id : finduser._id,role : finduser.role} },
+            cle,
+            { expiresIn : "24h"}
+            )
+        return res.status(200).json({
+            message : "mrgl ",
+            token : token,
+            user , finduser
+        })
+    }
+    
 }
