@@ -1,5 +1,7 @@
 import "../designcss/login.css"
 import axios from 'axios'
+//const MyPromise = require('some-promise-lib');
+import confetti from 'canvas-confetti';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import react, { useState } from 'react'
@@ -12,7 +14,7 @@ const Login=() => {
         }
         try{
             const res=await axios.post('http://localhost:5000/users/signin',data)
-            
+            confetti({particleCount: 150,spread: 180})
             toast.success("Login ..");
             
         }
@@ -36,6 +38,7 @@ const Login=() => {
             <button type="submit">login</button>
             </form>
             <ToastContainer />
+            
         </div>
     )
 }
