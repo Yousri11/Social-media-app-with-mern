@@ -28,7 +28,7 @@ const Register =()=>{
         }
             catch(e){
                 console.log(e)
-            }
+        }
     }
     return <div className='all'>
             <div className='register'>

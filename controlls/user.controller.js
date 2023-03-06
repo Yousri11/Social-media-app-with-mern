@@ -27,13 +27,13 @@ exports.signin=async (req,res)=>{
     const finduser=await user.findOne({email : email})
     if(!finduser) return res.status(400).json({message : "user does not exist" })
     if(finduser.pass!=pw){
-        return res.status(400).json({message : pw})
+        return res.status(400).json({message : "pass 8alat"})
     }
     else{
         //return res.status(200).json(message : finduser.pass)
         //generate token
         const cle="YOUSRI"
-        console.log("see if the error is fixed or not nvm tihs commit")
+        //console.log("see if the error is fixed or not nvm tihs commit")
         const token = jwt.sign({data : { id : finduser._id,role : finduser.role} },
             cle,
             { expiresIn : "24h"}

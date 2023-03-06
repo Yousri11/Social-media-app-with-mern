@@ -1,19 +1,42 @@
 import "../designcss/login.css"
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import react, { useState } from 'react'
 const Login=() => {
-    const Login=(e)=>{
-        console.log(email,"  ",password)
+    const Login=async (e)=>{
         e.preventDefault()
+        const data={
+            email : email,
+            pass : password
+        }
+        try{
+            const res=await axios.post('http://localhost:5000/users/signin',data)
+            
+            toast.success("Login ..");
+            
+        }
+            catch(e){
+                console.log(e)
+                toast.error(e.response.data.message)
+            }
+            //storage data.taken in local storege
+        
+                
+        
     }
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     return (
-        <form onSubmit={Login}>
-           <h1>login</h1>
-           <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} required/>
-           <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} required/>
-           <button type="submit">login</button>
-        </form>
+        <div>
+            <form onSubmit={Login}>
+            <h1>login</h1>
+            <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} required/>
+            <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} required/>
+            <button type="submit">login</button>
+            </form>
+            <ToastContainer />
+        </div>
     )
 }
 export default Login 
